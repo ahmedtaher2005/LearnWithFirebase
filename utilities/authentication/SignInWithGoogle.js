@@ -3,6 +3,7 @@ import { auth } from "../../firebaseConfig.js";
 
 // Function handles the users signin with their google account 
 export async function signInUserWithGoogle () {
+    const provider = new GoogleAuthProvider();
 
     /* STEP 2: Create a new instance of the Firebase Google Authenticator Proivider
     We are going to look at the following documentation to figure out how we might do 
@@ -13,7 +14,7 @@ export async function signInUserWithGoogle () {
         /* STEP 3: Create a pop-up window to appear so users may enter there google emails to
         complete the authetication process. We are going to look at the following documentation 
         to figure out how we might do this: https://firebase.google.com/docs/auth/web/google-signin */
-
+        await signInWithPopup(auth, provider);
         // return the string "success" if sign-in was complete
         return "success";
     
